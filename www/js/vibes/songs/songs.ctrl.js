@@ -4,30 +4,24 @@
     angular.module('vibes')
         .controller('SongsCtrl', SongsCtrl);
 
-    SongsCtrl.$inject = ['$rootScope', 'ChannelsService', 'ModalService', 'AudioService', 'ChannelMetadataService'];
+    SongsCtrl.$inject = ['ChannelsService', 'ModalService', 'AudioService', 'ChannelMetadataService'];
 
-    function SongsCtrl($rootScope, ChannelsService, ModalService, AudioService, ChannelMetadataService) {
+    function SongsCtrl(ChannelsService, ModalService, AudioService, ChannelMetadataService) {
         var vm = this;
         vm.channels = null;
         vm.setChannel = setChannel;
-        vm.curChannel = curChannel;
         vm.openModal = openModal;
         vm.closeModal = closeModal;
         vm.play = play;
         vm.pause = pause;
 
         init();
-
         function init() {
             vm.channels = ChannelsService.allSongChannels();
         }
 
         function setChannel(channelId) {
             ModalService.setSongsChannel(channelId);
-        }
-        
-        function curChannel() {
-            return $rootScope.curChannel;
         }
 
         function openModal() {

@@ -24,7 +24,7 @@
     <div class="music-footer" ng-if="modal!==undefined">
         <div class="row">
             <div class="col-10">
-                <img class="channel-face" ng-src="{{songsCtrl.curChannel().face}}">
+                <img class="channel-face" ng-src="{{songsCtrl.channels[curChannel.id].face}}">
             </div>
             <div class="col-80" ng-click="songsCtrl.openModal()">
                 <marquee>

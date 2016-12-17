@@ -4,13 +4,12 @@
     angular.module('vibes')
         .controller('DialoguesCtrl', DialoguesCtrl);
 
-    DialoguesCtrl.$inject = ['$rootScope', 'ChannelsService', 'ModalService', 'AudioService', 'ChannelMetadataService'];
+    DialoguesCtrl.$inject = ['ChannelsService', 'ModalService', 'AudioService', 'ChannelMetadataService'];
 
-    function DialoguesCtrl($rootScope, ChannelsService, ModalService, AudioService, ChannelMetadataService) {
+    function DialoguesCtrl(ChannelsService, ModalService, AudioService, ChannelMetadataService) {
         var vm = this;
         vm.channels = null;
         vm.setChannel = setChannel;
-        vm.curChannel = curChannel;
         vm.openModal = openModal;
         vm.closeModal = closeModal;
         vm.play = play;
@@ -23,10 +22,6 @@
 
         function setChannel(channelId) {
             ModalService.setDialoguesChannel(channelId);
-        }
-
-        function curChannel() {
-            return $rootScope.curChannel;
         }
 
         function openModal() {
